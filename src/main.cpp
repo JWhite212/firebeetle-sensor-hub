@@ -92,6 +92,18 @@ void setup() {
     // ── I2C bus (shared by BH1750 + OLED) ──────────
     Wire.begin(PIN_I2C_SDA, PIN_I2C_SCL);
 
+    // ── I2C scan (diagnostic) ────────────────────────
+    Serial.println("[I2C] Scanning bus...");
+    uint8_t devices_found = 0;
+    for (uint8_t addr = 1; addr < 127; addr++) {
+        Wire.beginTransmission(addr);
+        if (Wire.endTransmission() == 0) {
+            Serial.printf("[I2C] Device found at 0x%02X\n", addr);
+            devices_found++;
+        }
+    }
+    Serial.printf("[I2C] Scan complete — %u device(s) found\n\n", devices_found);
+
     // ── Register sensors ───────────────────────────
     // DHT22 — primary (higher accuracy: ±0.5°C, ±2% RH)
     sensor_hub::add_sensor(std::make_unique<DHTTempSensor>(dht22_device, "dht22_temperature"));
