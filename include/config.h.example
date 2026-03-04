@@ -1,0 +1,32 @@
+// config.h.example
+// Copy this file to config.h and fill in your real values.
+// config.h is .gitignore'd — NEVER commit credentials.
+#pragma once
+
+// ── WiFi ────────────────────────────────────────────
+constexpr const char* WIFI_SSID     = "YOUR_SSID";
+constexpr const char* WIFI_PASSWORD = "YOUR_PASSWORD";
+
+// ── MQTT ────────────────────────────────────────────
+constexpr const char* MQTT_BROKER   = "192.168.1.50";   // Your HA IP
+constexpr uint16_t    MQTT_PORT     = 1883;
+constexpr const char* MQTT_USER     = "mqtt_user";
+constexpr const char* MQTT_PASSWORD = "mqtt_password";
+constexpr const char* MQTT_CLIENT_PREFIX = "firebeetle";
+
+// ── Device identity (used in MQTT topics + HA discovery) ──
+constexpr const char* DEVICE_NAME   = "office-sensor-hub";
+constexpr const char* DEVICE_FRIENDLY_NAME = "Office Sensor Hub";
+constexpr const char* DEVICE_ID     = "firebeetle_office_01";
+
+// ── Timing ──────────────────────────────────────────
+constexpr uint32_t SENSOR_READ_INTERVAL_MS  = 10000;   // 10s between reads
+constexpr uint32_t MQTT_PUBLISH_INTERVAL_MS = 30000;   // 30s between publishes
+constexpr uint32_t OLED_PAGE_INTERVAL_MS    = 3000;    // 3s per OLED page
+constexpr uint32_t DISCOVERY_INTERVAL_MS    = 300000;  // Re-publish discovery every 5min
+
+// ── OTA ─────────────────────────────────────────────
+constexpr const char* OTA_PASSWORD  = "CHANGE_ME";
+
+// ── Watchdog ────────────────────────────────────────
+constexpr uint32_t WDT_TIMEOUT_S = 120;

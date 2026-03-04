@@ -1,0 +1,15 @@
+# PlatformIO
+.pio/
+.vscode/
+
+# Credentials — NEVER commit
+include/config.h
+
+# Build artifacts
+*.o
+*.elf
+*.bin
+
+# OS
+.DS_Store
+Thumbs.db
