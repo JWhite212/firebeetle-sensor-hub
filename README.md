@@ -524,4 +524,3 @@ To add a new sensor:
 ## Licence
 
 MIT
-# firebeetle-sensor-hub
